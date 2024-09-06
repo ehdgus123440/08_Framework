@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>detail</title>
+</head>
+
+<body>
+  <h1>DETAIL</h1>
+  <form action="/update?{todo.userNo}(userNo=${todo.userNo})">
+    <table border="1">
+      <thead>
+        <tr>
+        <tr>
+          <th>todoNo</th>
+          <th>todoTitle</th>
+          <th>todoComplate</th>
+          <th>todoDate</th>
+        </tr>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th th:text="${todo.todoNo}">todoNo</th>
+          <td th:text="${todo.todoTitle}">todoTitle</td>
+          <td th:text="${todo.todoCheck}">todoComplate</td>
+          <td th:text="${todo.todoDate}">todoDate</td>
+        </tr>
+        <tr>
+          <th>상세 내용</th>
+          <td data-th-text="${detail}">detail</td>
+        </tr>
+      </tbody>
+    </table>
+    <button>상세 내용 추가하기</button>
+  </form>
+</body>
+
+</html>

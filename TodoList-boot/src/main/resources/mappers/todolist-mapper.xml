@@ -32,8 +32,48 @@
 		FROM TB_DETAIL
 		WHERE TODO_NO = #{todoNo}
 	</select>
+	
+	<select id="selectNo" resultType="_int">
+		SELECT MAX(TODO_NO)+1
+		FROM TB_TODO
+	</select>
+	
+	<insert id="todoAdd">
+		INSERT INTO TB_TODO
+		VALUES (#{todoNo}, #{todoTitle}, 'X', DEFAULT)
+	</insert>
+	
+	<insert id="detailAdd">
+		INSERT INTO TB_DETAIL
+		VALUES (#{todoNo}, #{detail1})
+	</insert>
 
+	<insert id="detailupdate">
+		INSERT INTO TB_DETAIL
+		VALUES (#{todoNo}, #{detailInput})
+	</insert>
 
-
-
+	<delete id="delete">
+		DELETE 
+		FROM TB_DETAIL 
+		WHERE TODO_NO = #{todoNo} AND DETAIL = #{detail}
+	</delete>
+	
+	<delete id="todoDelete">
+		DELETE 
+		FROM TB_TODO 
+		WHERE TODO_NO = #{todoNo}
+	</delete>
+	
+	<update id="complateX">
+		UPDATE TB_TODO
+		SET TODO_CHECK = 'O'
+		WHERE TODO_NO = #{todoNo}
+	</update>
+	
+	<update id="complateO">
+		UPDATE TB_TODO
+		SET TODO_CHECK = 'X'
+		WHERE TODO_NO = #{todoNo}
+	</update>
 </mapper>

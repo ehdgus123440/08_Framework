@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>update</title>
+</head>
+
+<body>
+  <h1>상세 내용 추가</h1>
+  <table border="1" style="border-collapse: collapse;">
+    <thead>
+      <tr>
+      <tr>
+        <th>todoNo</th>
+        <th>todoTitle</th>
+        <th>todoComplate</th>
+        <th>todoDate</th>
+      </tr>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th th:text="${todo.todoNo}">todoNo</th>
+        <td th:text="${todo.todoTitle}">todoTitle</td>
+        <td th:text="${todo.todoCheck}">todoComplate</td>
+        <td th:text="${todo.todoDate}">todoDate</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>상세 내용 추가</h3> <br>
+  <form action="/detailAdd">
+    <input type="text" name="detailInput" style="width: 400px; height: 150px;"><br>
+    <input type="hidden" name="todoNo" th:value="${todo.todoNo}"><br>
+    <button>상세 내용 추가</button>
+  </form>
+
+</body>
+
+</html>

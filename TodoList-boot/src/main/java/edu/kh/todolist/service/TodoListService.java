@@ -27,4 +27,16 @@ public interface TodoListService {
 	 */
 	List<String> detail(int todoNo);
 
+	int todoAdd(String todoTitle, String detail1);
+
+	int detailAdd(int todoNo, String detailInput);
+
+	int delete(int todoNo, String detail);
+
+	int todoDelete(int todoNo);
+
+	int complate(int todoNo, String complate);
+
+
+
 }

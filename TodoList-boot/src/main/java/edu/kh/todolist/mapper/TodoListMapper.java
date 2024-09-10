@@ -3,6 +3,7 @@ package edu.kh.todolist.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import edu.kh.todolist.dto.todoDTO;
 
@@ -25,6 +26,22 @@ public interface TodoListMapper {
 	todoDTO selectDto(int todoNo);
 
 	List<String> detail(int todoNo);
+
+	int selectNo();
+
+	int todoAdd(@Param("todoNo") int todoNo, @Param("todoTitle") String todoTitle);
+
+	int detailAdd(@Param("todoNo") int todoNo, @Param("detail1") String detail1); 
+
+	int detailupdate(@Param("todoNo") int todoNo, @Param("detailInput") String detailInput);
+
+	int delete(@Param("todoNo") int todoNo, @Param("detail") String detail);
+
+	int todoDelete(@Param("todoNo") int todoNo);
+
+	int complateX(@Param("todoNo")int todoNo);
+
+	int complateO(@Param("todoNo")int todoNo);
 
 
 }

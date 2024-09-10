@@ -53,13 +53,96 @@ public class MainController {
 		model.addAttribute("todo", todo);
 		model.addAttribute("detail", detail);
 		
-		System.out.println(todo);
-		System.out.println(detail);
-		
 		return "common/detail";
 	}
 	
+	@GetMapping("addTab")
+	public String addTab() {
+		return "common/addTab";
+	}
+	
+	@GetMapping("todoAdd")
+	public String todoAdd(
+		@RequestParam("todoTitle") String todoTitle,
+		@RequestParam("detail1") String detail1
+		) {
+		
+		System.out.println(todoTitle);
+		System.out.println(detail1);
+		
+		int result = service.todoAdd(todoTitle, detail1);
+		
+		return "redirect:/";
+		
+	}
+	
+	@GetMapping("detail/update/{todoNo}")
+	public String detailUpdate(
+			@PathVariable("todoNo") String No
+			, Model model
+			) {
+		
+		int todoNo = Integer.parseInt(No);
+		
+		todoDTO todo = service.selectTodo(todoNo);
+		
+		model.addAttribute("todo",todo);
+		
+		
+		return "common/updateTab";
+		
+	}
 	
 	
+	@GetMapping("detailAdd")
+	public String detailAdd(
+			@RequestParam("detailInput") String detailInput,
+			@RequestParam("todoNo") String No
+			) {
+		System.out.println(detailInput);
+		System.out.println(No);
+		
+		int todoNo = Integer.parseInt(No);
+		
+		int result = service.detailAdd(todoNo, detailInput);
+		
+		return "redirect:selectTodo/" + todoNo;
+	}
 	
+	@GetMapping("delete/{detailDelete}/{todoNo}")
+	public String delete(
+			@PathVariable("detailDelete") String detail,
+			@PathVariable("todoNo") String no
+			) {
+		int todoNo = Integer.parseInt(no);
+		System.out.println(todoNo);
+		System.out.println(detail);
+		
+		int result = service.delete(todoNo, detail);
+		return "redirect:/selectTodo/"+todoNo;
+	}
+	
+	@GetMapping("todoDelete/{no}")
+	public String todoDelete(
+			@PathVariable("no") String no
+			) {
+		
+		int todoNo = Integer.parseInt(no);
+		
+		int result = service.todoDelete(todoNo);
+		
+		return "redirect:/";
+	}
+	
+	@GetMapping("complate")
+	public String complate(
+			@RequestParam("todoNo") String No,
+			@RequestParam("complate") String complate
+			) {
+		
+		int todoNo = Integer.parseInt(No);
+		int result = service.complate(todoNo, complate);
+		
+		return "redirect:/selectTodo/"+todoNo;  
+	}
 }

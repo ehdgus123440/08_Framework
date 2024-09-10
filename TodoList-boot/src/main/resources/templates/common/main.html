@@ -20,7 +20,7 @@
         <th>todoTitle</th>
         <th>todoComplate</th>
         <th>todoDate</th>
-      </tr>
+      </tr> 
     </thead>
     <tbody>
       <th:block th:each= "todolist:${todolist}" 
@@ -34,5 +34,6 @@
       </th:block>
     </tbody>
   </table>
+  <form action="/addTab"><button>추가</button></form>
 </body>
 </html>

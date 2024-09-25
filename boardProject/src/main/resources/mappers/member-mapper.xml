@@ -29,5 +29,35 @@
 		WHERE MEMBER_EMAIL = #{memberEmail}
 		AND   MEMBER_DEL_FL = 'N'
  	</select>
+ 	
+ 	<!-- 회원 가입 -->
+  <insert id="signUp" parameterType="Member">
+  	INSERT INTO "MEMBER"
+	VALUES(
+		SEQ_MEMBER_NO.NEXTVAL, 
+		#{memberEmail}, 
+		#{memberPw},
+		#{memberNickname}, 
+		#{memberTel}, 
+		#{memberAddress}, 
+		NULL, DEFAULT, DEFAULT, DEFAULT)
+  </insert>
+ 	
+ 	  <!-- 이메일 중복 검사 -->
+  <select id="emailCheck" resultType="_int">
+  	SELECT COUNT(*)
+  	FROM "MEMBER"
+  	WHERE MEMBER_EMAIL = #{email}
+  	AND   MEMBER_DEL_FL = 'N'
+  </select>
+  
+  <select id="nickCheck" resultType="_int">
+  	SELECT COUNT(*)
+  	FROM "MEMBER"
+  	WHERE MEMBER_NICKNAME = #{nickname}
+  	AND   MEMBER_DEL_FL = 'N'
+  </select>
+ 	
+ 	
 </mapper>
   

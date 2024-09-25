@@ -14,4 +14,24 @@ public interface MemberMapper {
 	 */
 	Member login(String string);
 
+	/**
+	 * 회원가입
+	 * @param inputMember
+	 * @return result
+	 */
+	int signUp(Member inputMember);
+	/**
+	 * 이메일 중복 검사
+	 * @param email
+	 * @return
+	 */
+	int emailCheck(String email);
+
+	/**
+	 * 닉네임 중복 검사
+	 * @param nickname
+	 * @return
+	 */
+	int nickCheck(String nickname);
+
 }

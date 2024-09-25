@@ -1,22 +1,41 @@
-
 *{
   box-sizing: border-box;
 }
 
 body{
+  /* display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center; */
+  
+  
+  margin: 0;
+
+}
+
+.menu{
+  text-align: end;
+  padding: 30px;
+}
+
+
+.main{
   display: flex;
   min-height: 100vh;
   margin: 0;
   justify-content: center;
-  align-items: center;
+  align-items: center; 
 }
 
-.mainDiv{
-  border: 1px solid black; 
-  width: 300px;
-  height: 300px;
+.Dog{
+  width: 50vw;
+  height: 100vh;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border: 1px solid black;
+}
+.Cat{
+  width: 50vw;
+  height: 100vh;
+
+  border: 1px solid black;
 }

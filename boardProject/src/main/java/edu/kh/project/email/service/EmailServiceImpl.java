@@ -155,9 +155,8 @@ public class EmailServiceImpl implements EmailService {
 		return templateEngine.process("email/" + htmlName, context);
 		
 	}
-
-
-
+  
+  
 	
 	// 인증 번호 확인
 	@Override
@@ -176,11 +175,6 @@ public class EmailServiceImpl implements EmailService {
 		//    입력 받은 인증 번호와 비교
 		return redisUtil.getValue(email).equals(authKey);
 	}
-  
-	
-	
-  
-  
   
 	
 }

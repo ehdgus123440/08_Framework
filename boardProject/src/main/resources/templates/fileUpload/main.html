@@ -9,7 +9,17 @@
   <!-- templates/common/common.html 조각으로 추가 -->
   <th:block th:replace="~{common/common}"></th:block>
 </head>
-
+<style>
+  main{
+    padding: 20px;
+  }
+  hr{
+    margin: 20px 0;
+  }
+  pre{
+    font-family: sans-serif;
+  }
+</style>
 <body>
 
   <main>
@@ -19,7 +29,7 @@
     <h1>파일 업로드 테스트</h1>
     <hr>
 
-    <pre style="font-family: sans-serif;">
+    <pre>
       - 파일을 제출하려는 form 태그는 무조건 method = "POST"   !!!!
 
       - 파일을 제출하기 위해서는 
@@ -57,14 +67,49 @@
 
         <button>제출하기</button>
       </form>
-
     </div>
 
-    <hr>
 
+    <hr>
+    <h3>단일 파일 업로드 + 일반 데이터</h3>
+    <form action="/fileUpload/test2"
+          method="POST"
+          enctype="multipart/form-data">
+
+      <input type="file" name="uploadFile"> 
+      <br>
+      서버에 저장되는 파일 이름 지정 : 
+      <input type="text" name="fileName">
+
+      <button>제출</button>
+
+    </form>
+
+    <hr>
+    <h3>
+      단일 파일 업로드 
+      + 사용자 정의 예외를 이용한 예외 처리
+    </h3>
+
+    <form 
+      action="/fileUpload/test3"
+      method="POST"
+      enctype="multipart/form-data">
+
+      <input type="file" name="uploadFile">
+      <button>제출</button>
+      
+    </form>
+
+
+
+
+
+    <hr>
     <h3>업로드된 파일 목록</h3>
 
-    <table border="1">
+    <table border="1" 
+      style="margin: auto; border-collapse: collapse;">
       <thead>
         <tr>
           <th>파일 번호</th>
@@ -73,18 +118,34 @@
           <th>등록일</th>
         </tr>
       </thead>
+
       <tbody>
-        <tr th:each="f : ${fileList}" th:object="${f}">
+        <tr th:each="f : ${fileList}"  
+            th:object="${f}">
+          
           <th th:text="*{fileNo}">번호</th>
-          <td th:text="*{FileOriginalName}">원본</td>
-          <td><a th:href="|*{filePath}*{fileRename}|" th:text="*{fileRename}" download>변경명</a></td>
+          <td th:text="*{fileOriginalName}">원본</td>
+
+          <td>
+            <!-- 
+              download 속성 : 브라우저에서 열리지 않고 다운로드 
+              download = "파일명"  : 다운로드되는 파일의 이름을 지정
+            -->
+            <a th:href="|*{filePath}*{fileRename}|" 
+               th:text="*{fileRename}"
+
+               th:download = "*{fileOriginalName}"
+
+               style="color: orange; font-weight: bold;">변경명</a>
+          </td>
+
           <td th:text="*{updateDate}">날짜</td>
         </tr>
+
       </tbody>
 
+
     </table>
-
-
 
 
   </main>

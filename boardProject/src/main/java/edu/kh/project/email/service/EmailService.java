@@ -7,7 +7,7 @@ public interface EmailService {
 	/** 이메일 발송 서비스
 	 * @param htmlName 
 	 * @param email
-	 * @return
+	 * @return	
 	 */
 	int sendEmail(String htmlName, String email);
 

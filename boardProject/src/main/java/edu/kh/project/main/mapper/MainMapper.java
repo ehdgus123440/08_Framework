@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import edu.kh.project.member.dto.Member;
 
@@ -22,18 +21,20 @@ public interface MainMapper {
 	 */
 	Member directLogin(int memberNo);
 
-	/**
-	 * 비밀번호 초기화
+	/** 비밀번호 초기화
 	 * @param memberNo
-	 * @param encoder
-	 * @return
+	 * @param encPw
+	 * @return result
 	 */
-	int resetPw(@Param("memberNo") int memberNo, @Param("encPw") String encPw);
+	int resetPw(@Param("no") int memberNo, @Param("pw") String encPw);
 
-	String checkFl(int memberNo);
+	/** 회원 탈퇴 상태 변경
+	 * @param memberNo
+	 * @return result
+	 */
+	int changeStatus(int memberNo);
+	
 
-	int changeStatusY(int memberNo);
-
-	int changeStatusN(int memberNo);
-
+	
+	
 }

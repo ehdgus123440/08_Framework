@@ -9,9 +9,9 @@ import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @Builder
 public class FileDto {
 	private int fileNo;

@@ -17,14 +17,13 @@ public interface MainService {
 	 */
 	Member directLogin(int memberNo);
 
-	/**
-	 * 비밀번호 초기화
+	/** 비밀번호 초기화
 	 * @param memberNo
+	 * @return result
 	 */
 	int resetPw(int memberNo);
 
-	/**
-	 * 탈퇴 상태 변경
+	/** 회원 탈퇴 상태 변경
 	 * @param memberNo
 	 * @return
 	 */

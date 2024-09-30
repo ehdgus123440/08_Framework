@@ -2,7 +2,6 @@ package edu.kh.project.main.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,8 +17,7 @@ public class MainServiceImpl implements MainService{
 	
 	private final MainMapper mapper;
 	
-	@Autowired
-	private BCryptPasswordEncoder encoder;
+	private final BCryptPasswordEncoder encoder;
 	
 	// 전체 회원 조회
 	@Override
@@ -32,39 +30,21 @@ public class MainServiceImpl implements MainService{
 	public Member directLogin(int memberNo) {
 		return mapper.directLogin(memberNo);
 	}
-
+	
+	// 비밀번호 초기화
 	@Override
 	public int resetPw(int memberNo) {
 		
+		// "pass01!" 를 암호화 -> BCryptPasswordEncoder 필요
 		String encPw = encoder.encode("pass01!");
 		
 		return mapper.resetPw(memberNo, encPw);
 	}
-
+	
+	
+	// 회원 탈퇴 상태 변경
 	@Override
 	public int changeStatus(int memberNo) {
-
-		int result = 0;
-		
-		String checkFl = mapper.checkFl(memberNo);
-		
-		System.out.println(checkFl);
-		
-		if(checkFl.equals("Y")) {
-			result = mapper.changeStatusN(memberNo);
-		}
-		else {
-			result = mapper.changeStatusY(memberNo);
-		}
-		
-		return result;
+		return mapper.changeStatus(memberNo);
 	}
-	
-	
-	
 }
-
-
-
-
-

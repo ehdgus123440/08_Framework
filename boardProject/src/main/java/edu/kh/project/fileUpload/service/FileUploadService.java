@@ -28,8 +28,7 @@ public interface FileUploadService {
 	String test2(MultipartFile uploadFile, String fileName)
 			throws IllegalStateException, IOException ;
 
-	/**
-	 * 파일 업로드
+	/** 단일 파일 업로드 + 사용자 정의 예외를 이용한 예외 처리
 	 * @param uploadFile
 	 * @return
 	 */

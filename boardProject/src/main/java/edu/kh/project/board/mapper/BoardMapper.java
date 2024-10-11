@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 import edu.kh.project.board.dto.Board;
+import edu.kh.project.board.dto.Comment;
 
 @Mapper
 public interface BoardMapper {
@@ -36,7 +37,7 @@ public interface BoardMapper {
 	 * @param boardNo
 	 * @return result
 	 */
-	int updateReadcount(int boardNo);
+	int updateReadCount(int boardNo);
 
 	/**
 	 * 좋아요 누른적 있는지 검사
@@ -52,7 +53,7 @@ public interface BoardMapper {
 	 * @param memberNo
 	 * @return
 	 */
-	int insertBoardLIke(@Param("boardNo") int boardNo, @Param("memberNo") int memberNo);
+	int insertBoardLike(@Param("boardNo") int boardNo, @Param("memberNo") int memberNo);
 
 	/**
 	 * 좋아요 삭제
@@ -74,5 +75,12 @@ public interface BoardMapper {
 	 * @return
 	 */
 	List<Map<String, String>> selectBoardTypeList();
+
+	/**
+	 * 댓글 목록 조회
+	 * @param boardNo
+	 * @return commentList
+	 */
+	List<Comment> selectCommentList(int boardNo);
 
 }

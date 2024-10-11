@@ -86,7 +86,7 @@
 	MEMBER_NICKNAME,
 		(SELECT COUNT(*) 
 		 FROM "COMMENT" C
-		 WHERE C.BOARD_NO = B.BOARD_NO) AS "COMMENT_COUNT",
+		 WHERE C.BOARD_NO = B.BOARD_NO AND C.COMMENT_DEL_FL = 'N') AS "COMMENT_COUNT",
 		 
 		(SELECT COUNT(*)
 		 FROM "BOARD_LIKE" L
@@ -196,7 +196,7 @@
 	ORDER SIBLINGS BY COMMENT_NO
   </select>
   
-  <update id="updateReadcount">
+  <update id="updateReadCount">
   	UPDATE "BOARD"
   	SET
   		READ_COUNT = READ_COUNT + 1
@@ -239,9 +239,7 @@
   	ORDER BY BOARD_CODE ASC
   </select>
   
-  
-  
-  
+
   
   
 </mapper>

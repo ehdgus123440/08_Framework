@@ -81,6 +81,7 @@ deleteBtn?.addEventListener("click", () => {
   const input = document.createElement("input");
   input.type = "hidden";
   input.name = "boardNo";
+
   input.value = boardNo;
 
   form.append(input); // form 자식으로 input 추가
@@ -91,12 +92,10 @@ deleteBtn?.addEventListener("click", () => {
   form.submit(); // 제출
 })
 
-
-
 // ---------------------------------------------------
 
 /* * 수정 버튼 클릭 시 *
-  - /editBoard/{boardCode}/{boardNo}, POST, 동기식
+  - /editBoard/{boardCode}/{boardNo}/updateView, POST, 동기식
    -> form 태그 생성 
    -> body 태그 제일 아래 추가해서 submit()
 
@@ -111,17 +110,17 @@ const updateBtn = document.querySelector("#updateBtn");
 updateBtn?.addEventListener("click", () => {
   const form = document.createElement("form");
 
-   //  /editBoard/{boardCode}/{boardNo}
-  form.action = location.pathname.replace("board", "editBoard") + "/updateView";
+  //  /editBoard/{boardCode}/{boardNo}/updateView
+  form.action = location.pathname.replace("board","editBoard")
+                + "/updateView";
+
   form.method = "POST";
   
   document.querySelector("body").append(form);
   form.submit();
-
 })
 
-
-// -------------------------------------------------------
+// ----------------------------------------------------
 
 /* 목록으로 버튼 클릭 시 */
 const goToListBtn = document.querySelector("#goToListBtn");

@@ -2,6 +2,9 @@ package edu.kh.project.common.util;
 
 import java.text.SimpleDateFormat;
 
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+
 public class FileUtil {
 	
 	// 파일명 뒤에 붙는 숫자 (1~99999 반복)
@@ -49,6 +52,7 @@ public class FileUtil {
 	}
 	
 	
+
 	
 	
 	

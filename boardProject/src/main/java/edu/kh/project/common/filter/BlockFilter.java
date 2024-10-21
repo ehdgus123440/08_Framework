@@ -31,7 +31,7 @@ public class BlockFilter implements Filter {
 		String ip = getRemoteAddr(req);
 		
 		if( !ip.equals("0:0:0:0:0:0:0:1")) {
-			resp.sendRedirect(ip); // 메인 페이지로 리다이렉트
+			resp.sendRedirect("https://www.naver.com/"); // 메인 페이지로 리다이렉트
 		} else {
 		chain.doFilter(request, response); // 다음 필터로 이동
 		}

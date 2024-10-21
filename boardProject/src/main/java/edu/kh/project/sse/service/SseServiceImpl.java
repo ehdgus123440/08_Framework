@@ -43,4 +43,19 @@ public class SseServiceImpl implements SseService{
 	public List<Notification> selectNotificationList(int memberNo) {
 		return mapper.selectNotificationList(memberNo);
 	}
+
+	@Override
+	public int notReadCheck(int memberNo) {
+		return mapper.notReadCheck(memberNo);
+	}
+
+	@Override
+	public void deleteNotification(int notificationNo) {
+		mapper.deleteNotification(notificationNo);
+	}
+	
+	@Override
+	public void updateNotification(int notificationNo) {
+		mapper.updateNotification(notificationNo);
+	}
 }

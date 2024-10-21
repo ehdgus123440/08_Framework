@@ -271,6 +271,8 @@ public class MyPageController {
 		return "myPage/myPage-profile";
 	}
 	
+	
+	
 	/** 로그인한 회원의 프로필 이미지 수정
 	 * @param profileImg : 제출된 이미지
 	 * @param loginMember : 로그인한 회원 정보

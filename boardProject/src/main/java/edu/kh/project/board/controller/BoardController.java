@@ -340,7 +340,6 @@ public class BoardController {
 
 			url += "&key=" + paramMap.get("key") + "&query=" + query;
 		}
-
 		return url;
 	}
 

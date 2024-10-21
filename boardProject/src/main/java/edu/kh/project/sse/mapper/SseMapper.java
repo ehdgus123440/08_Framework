@@ -22,5 +22,24 @@ public interface SseMapper {
 
 	List<Notification> selectNotificationList(int memberNo);
 
+	/**
+	 * 안읽은 알람 개수
+	 * @param memberNo
+	 * @return count
+	 */
+	int notReadCheck(int memberNo);
+
+	/**
+	 * 알림 삭제
+	 * @param notificationNo
+	 */
+	void deleteNotification(int notificationNo);
+
+	/**
+	 * 알림 읽음 여부 변경
+	 * @param notificationNo
+	 */
+	void updateNotification(int notificationNo);
+
 	
 }

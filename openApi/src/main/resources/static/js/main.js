@@ -116,3 +116,18 @@ document.querySelector("#selectBtn").addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", () => {
   getAirQuality("서울");
 })
+
+
+
+
+// ---------------------------------------------------
+
+// Java 부분 select 변경 후 조회 클릭 시 동작
+document.querySelector("#selectBtn2").addEventListener("click", () => {
+
+  // 선택된 도시명
+  const cityName = document.querySelector("#cityName2").value;
+
+  location.href = location.pathname + "?cityName=" + cityName;
+
+})
